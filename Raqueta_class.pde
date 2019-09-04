@@ -2,7 +2,7 @@ class Raqueta{
   // racket settings
   float x;
   float y;
-  float racketX = 300;
+  float racketX = 0;
   float racketY = height;
   color racketColor = color(0);
   float racketWidth = 100;
@@ -33,7 +33,7 @@ class Raqueta{
       x = mouseX;
       y = mouseY;
     }else{
-      overhead = racketY - (racketY+2);
+      overhead = 2;
       x=racketX;
       y=racketY;
     }
@@ -52,25 +52,30 @@ class Raqueta{
   }
   
   void ia(Pelota ball, Escenario esc){
-    int x=0, y=0, i=0;
+    //&& racketX+racketWidth/2>esc.wallX-270
+    if ( racketX+racketWidth/2  > esc.wallX - 120  )  {
+      
+      if (racketY < esc.wallH){
+        racketY = esc.wallH -10;
+      }
+      if (racketY > esc.wallH){
+        racketY -=10;
+      }
+    }
     
-    while(racketX<ball.ballX+ball.ballSize/2){
+    if(racketX<ball.ballX+ball.ballSize/2){
       racketX += 10;
     }
-    while(racketX>ball.ballX+ball.ballSize/2){
+    if (racketX>ball.ballX+ball.ballSize/2){
       racketX -= 10;
     }
     
-    //esc.get[];
-    //while(racketY<ball.ballY+ball.ballSize/2+20 && racketY<height/2){
-    //  racketY += 10;
-    //}
-    //while(racketY>ball.ballY+ball.ballSize/2-20){
-    //  racketY -= 10;
-    //}
-  }
-  
-  void moverY(){
+    
+    if(racketY < ball.ballY){
+      racketY = ball.ballY - 5;
+    }
     
   }
+  
+  
 }

@@ -1,6 +1,6 @@
 public class Pelota{
   // ball settings
-  private float ballX = width/4;
+  private float ballX = width/2;
   float ballY = 0;
   float ballSpeedVert = 0;
   float ballSpeedHorizon = 0;

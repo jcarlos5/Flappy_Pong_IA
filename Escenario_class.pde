@@ -5,6 +5,9 @@ class Escenario{
   float lastAddTime = 0;
   int minGapHeight = 200;
   int maxGapHeight = 300;
+  int wallH;
+  int wallX;
+
   int wallWidth = 80;
   color wallColors = color(44, 62, 80);
   // This arraylist stores data of the gaps between the walls. Actuals walls are drawn accordingly.
@@ -59,13 +62,17 @@ class Escenario{
     int gapWallY = wall[1];
     int gapWallWidth = wall[2];
     int gapWallHeight = wall[3];
+    wallH=gapWallY+gapWallHeight;
     // draw actual walls
     screen.rectMode(CORNER);
     screen.noStroke();
     screen.strokeCap(ROUND);
     screen.fill(wallColors);
+    //Obstaculo superior
     screen.rect(gapWallX, 0, gapWallWidth, gapWallY, 0, 0, 15, 15);
+    //Obstaculo inferior 
     screen.rect(gapWallX, gapWallY+gapWallHeight, gapWallWidth, height-(gapWallY+gapWallHeight), 15, 15, 0, 0);
+    wallX = gapWallX;
   }
   
   void watchWallCollision(int index, Pelota ball) {
