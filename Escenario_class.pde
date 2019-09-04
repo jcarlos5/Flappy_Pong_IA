@@ -62,7 +62,7 @@ class Escenario{
     int gapWallY = wall[1];
     int gapWallWidth = wall[2];
     int gapWallHeight = wall[3];
-    wallH=gapWallY+gapWallHeight;
+    
     // draw actual walls
     screen.rectMode(CORNER);
     screen.noStroke();
@@ -72,7 +72,9 @@ class Escenario{
     screen.rect(gapWallX, 0, gapWallWidth, gapWallY, 0, 0, 15, 15);
     //Obstaculo inferior 
     screen.rect(gapWallX, gapWallY+gapWallHeight, gapWallWidth, height-(gapWallY+gapWallHeight), 15, 15, 0, 0);
+    
     wallX = gapWallX;
+    wallH=gapWallY+gapWallHeight;
   }
   
   void watchWallCollision(int index, Pelota ball) {

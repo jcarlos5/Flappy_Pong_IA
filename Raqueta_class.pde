@@ -52,16 +52,6 @@ class Raqueta{
   }
   
   void ia(Pelota ball, Escenario esc){
-    //&& racketX+racketWidth/2>esc.wallX-270
-    if ( racketX+racketWidth/2  > esc.wallX - 120  )  {
-      
-      if (racketY < esc.wallH){
-        racketY = esc.wallH -10;
-      }
-      if (racketY > esc.wallH){
-        racketY -=10;
-      }
-    }
     
     if(racketX<ball.ballX+ball.ballSize/2){
       racketX += 10;
@@ -69,12 +59,22 @@ class Raqueta{
     if (racketX>ball.ballX+ball.ballSize/2){
       racketX -= 10;
     }
-    
-    
     if(racketY < ball.ballY){
       racketY = ball.ballY - 5;
     }
+    // 
+    if ( millis()-esc.lastAddTime >900  )  {
+      if (racketY < esc.wallH){
+        racketY +=10;
+      }
+      if (racketY > esc.wallH){
+        racketY -= 10;
+      }
+    }
+ 
     
+    
+
   }
   
   
