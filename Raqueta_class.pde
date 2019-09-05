@@ -50,10 +50,10 @@ class Raqueta{
   void ia(Pelota ball, Escenario esc){
     
     if(racketX<ball.ballX+ball.ballSize/2){
-      racketX += 10;
+      racketX += 5;
     }
     if (racketX>ball.ballX+ball.ballSize/2){
-      racketX -= 10;
+      racketX -= 5;
     }
     
     // 
