@@ -47,22 +47,22 @@ class Raqueta{
     }
   }
   
-  void ia(Pelota ball, Escenario esc){
+  void ia(Pelota ball,int ejey,int ejex){
     
     if(racketX<ball.ballX+ball.ballSize/2){
-      racketX += 5;
+      racketX += 7;
     }
     if (racketX>ball.ballX+ball.ballSize/2){
-      racketX -= 5;
+      racketX -= 7;
     }
     
-    // 
-    if ( racketX+racketWidth/2<esc.gapWallX+80 && racketX+racketWidth/2>esc.gapWallX-60 )  {
-      if (racketY < esc.wallH){
-          racketY +=esc.wallH-racketY-10;
+     
+    if (  racketX+racketWidth/2>ejex-60 && racketX+racketWidth/2<ejex+80 )  {
+      if (racketY < ejey-10){
+          racketY +=7;
       }
-      if (racketY > esc.wallH){
-          racketY -= racketY-esc.wallH+10;
+      if (racketY > ejey-10){
+          racketY -= 7;
       }
     }
     if(racketY < ball.ballY){

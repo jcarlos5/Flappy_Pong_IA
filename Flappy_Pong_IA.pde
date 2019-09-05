@@ -141,8 +141,7 @@ void gameIA(){
   pltjr.drawHealthBar(jr);
   printScore(pltjr, jr);
   escjr.wallAdder(jr);
-  escjr.wallHandler(jr, pltjr);
-  rckjr.ia(pltjr, escjr);
+  escjr.wallHandler(jr, pltjr, rckjr);
   jr.endDraw();
 }
 
@@ -158,7 +157,7 @@ void gameUser(){
   pltuser.drawHealthBar(user);
   printScore(pltuser, user);
   escuser.wallAdder(user);
-  escuser.wallHandler(user, pltuser);
+  escuser.wallHandler(user, pltuser, rckuser);
   user.endDraw();
 }
 

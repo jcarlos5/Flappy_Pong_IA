@@ -7,7 +7,6 @@ class Escenario{
   int maxGapHeight = 300;
   int wallH;
   int gapWallX;
-
   int wallWidth = 80;
   color wallColors = color(44, 62, 80);
   // This arraylist stores data of the gaps between the walls. Actuals walls are drawn accordingly.
@@ -34,11 +33,11 @@ class Escenario{
     }
   }
   
-  void wallHandler(PGraphics screen, Pelota ball) {
+  void wallHandler(PGraphics screen, Pelota ball, Raqueta rck) {
     for (int i = 0; i < walls.size(); i++) {
       wallRemover(i);
       wallMover(i);
-      wallDrawer(i, screen);
+      wallDrawer(i, screen, ball, rck);
       watchWallCollision(i, ball);
     }
   }
@@ -55,10 +54,10 @@ class Escenario{
     wall[0] -= wallSpeed;
   }
   
-  void wallDrawer(int index, PGraphics screen) {
+  void wallDrawer(int index, PGraphics screen, Pelota plt, Raqueta rck) {
     int[] wall = walls.get(index);
     // get gap wall settings 
-    gapWallX = wall[0];
+    int gapWallX = wall[0];
     int gapWallY = wall[1];
     int gapWallWidth = wall[2];
     int gapWallHeight = wall[3];
@@ -77,14 +76,17 @@ class Escenario{
     // gapWallY+gapWallHeight = coordenada y del inferior
     // gapWallWidth = ancho 
     //height-(gapWallY+gapWallHeight) = altura del obstaculo inferior
-    wallH=gapWallY+gapWallHeight;
+    if (screen == jr){
+      rck.ia(plt,gapWallY+gapWallHeight,gapWallX);
+    }
+    
 
   }
   
   void watchWallCollision(int index, Pelota ball) {
     int[] wall = walls.get(index);
     // get gap wall settings 
-    int gapWallX = wall[0];
+    gapWallX = wall[0];
     int gapWallY = wall[1];
     int gapWallWidth = wall[2];
     int gapWallHeight = wall[3];
