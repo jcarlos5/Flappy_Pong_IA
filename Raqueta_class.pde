@@ -8,10 +8,6 @@ class Raqueta{
   float racketWidth = 100;
   float racketHeight = 10;
   
-  Raqueta(){
-    
-  }
-  
   void drawRacket(PGraphics screen) {
     screen.fill(racketColor);
     screen.rectMode(CENTER);
@@ -59,21 +55,19 @@ class Raqueta{
     if (racketX>ball.ballX+ball.ballSize/2){
       racketX -= 10;
     }
+    
+    // 
+    if ( racketX+racketWidth/2<esc.gapWallX+80 && racketX+racketWidth/2>esc.gapWallX-60 )  {
+      if (racketY < esc.wallH){
+          racketY +=esc.wallH-racketY-10;
+      }
+      if (racketY > esc.wallH){
+          racketY -= racketY-esc.wallH+10;
+      }
+    }
     if(racketY < ball.ballY){
       racketY = ball.ballY - 5;
     }
-    // 
-    if ( millis()-esc.lastAddTime >900  )  {
-      if (racketY < esc.wallH){
-        racketY +=10;
-      }
-      if (racketY > esc.wallH){
-        racketY -= 10;
-      }
-    }
- 
-    
-    
 
   }
   

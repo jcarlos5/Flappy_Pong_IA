@@ -6,7 +6,7 @@ class Escenario{
   int minGapHeight = 200;
   int maxGapHeight = 300;
   int wallH;
-  int wallX;
+  int gapWallX;
 
   int wallWidth = 80;
   color wallColors = color(44, 62, 80);
@@ -58,7 +58,7 @@ class Escenario{
   void wallDrawer(int index, PGraphics screen) {
     int[] wall = walls.get(index);
     // get gap wall settings 
-    int gapWallX = wall[0];
+    gapWallX = wall[0];
     int gapWallY = wall[1];
     int gapWallWidth = wall[2];
     int gapWallHeight = wall[3];
@@ -70,11 +70,15 @@ class Escenario{
     screen.fill(wallColors);
     //Obstaculo superior
     screen.rect(gapWallX, 0, gapWallWidth, gapWallY, 0, 0, 15, 15);
+    
     //Obstaculo inferior 
     screen.rect(gapWallX, gapWallY+gapWallHeight, gapWallWidth, height-(gapWallY+gapWallHeight), 15, 15, 0, 0);
-    
-    wallX = gapWallX;
+    // gapWallX = coordenada x del obstaculo inferior 
+    // gapWallY+gapWallHeight = coordenada y del inferior
+    // gapWallWidth = ancho 
+    //height-(gapWallY+gapWallHeight) = altura del obstaculo inferior
     wallH=gapWallY+gapWallHeight;
+
   }
   
   void watchWallCollision(int index, Pelota ball) {

@@ -130,7 +130,6 @@ void resumeScreen(){
 /******** JUEGO ************/
 
 void gameIA(){
-  
   jr.beginDraw();
   jr.background(222, 193, 193);
   rckjr.drawRacket(jr);
@@ -141,10 +140,9 @@ void gameIA(){
   pltjr.keepInScreen();
   pltjr.drawHealthBar(jr);
   printScore(pltjr, jr);
-  rckjr.ia(pltjr, escjr);
   escjr.wallAdder(jr);
   escjr.wallHandler(jr, pltjr);
-  
+  rckjr.ia(pltjr, escjr);
   jr.endDraw();
 }
 
